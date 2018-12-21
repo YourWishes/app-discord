@@ -50,7 +50,7 @@ export class DiscordModule extends Module {
   }
 
   getCommand(command:string):DiscordCommand {
-    if(!command.length) return null;
+    if(!command || !command.length) return null;
 
     let cmd = command.toLowerCase();
     let aliasMatch:DiscordCommand = null;

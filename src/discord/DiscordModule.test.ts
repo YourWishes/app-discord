@@ -172,6 +172,7 @@ describe('getCommand', () => {
   });
 
   it('should return null if no command is entered', () => {
+    expect(module.getCommand(null)).toBeNull();
     expect(module.getCommand('')).toBeNull();
   });
 });

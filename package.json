@@ -1,0 +1,43 @@
+{
+  "name": "@yourwishes/app-discord",
+  "version": "1.0.0",
+  "description": "Discord Module for use with my App Framework.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "npm run build:live",
+    "build:live": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/index.ts",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YourWishes/app-discord.git"
+  },
+  "keywords": [
+    "disocrd",
+    "app-discord",
+    "framework",
+    "command",
+    "bot"
+  ],
+  "author": "Dominic Masters <dominic@domsplace.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YourWishes/app-discord/issues"
+  },
+  "homepage": "https://github.com/YourWishes/app-discord#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/node-cache": "^4.1.1",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.8",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@yourwishes/app-base": "^1.0.2",
+    "discord.js": "^11.4.2"
+  }
+}

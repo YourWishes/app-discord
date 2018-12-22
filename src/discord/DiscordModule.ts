@@ -68,13 +68,13 @@ export class DiscordModule extends Module {
   }
 
   addCommand(command:DiscordCommand):void {
-    if(!(command instanceof DiscordCommand)) throw "Invalid Command";
+    if(!(command instanceof DiscordCommand)) throw new Error("Invalid Command");
     if(this.commands.indexOf(command) !== -1) return;
     this.commands.push(command);
   }
 
   removeCommand(command:DiscordCommand):void {
-    if(!(command instanceof DiscordCommand)) throw "Invalid Command";
+    if(!(command instanceof DiscordCommand)) throw new Error("Invalid Command");
     let index = this.commands.indexOf(command);
     if(index === -1) return;
     this.commands.splice(index, 1);
@@ -83,11 +83,13 @@ export class DiscordModule extends Module {
 
   async init():Promise<void> {
     //Check configuration has the correct keys in them.
-    if(!this.app.config.has(CONFIG_ID)) throw "Missing Discord Client ID in configuration.";
-    if(!this.app.config.has(CONFIG_TOKEN)) throw "Missing Discord Token in configuration.";
+    if(!this.app.config.has(CONFIG_ID)) throw new Error("Missing Discord Client ID in configuration.");
+    if(!this.app.config.has(CONFIG_TOKEN)) throw new Error("Missing Discord Token in configuration.");
 
     //Configuration set, let's connect to the Discord servers.
+    this.logger.debug('Connecting to Discord...');
     this.token = await this.client.login(this.app.config.get(CONFIG_TOKEN));
+    this.logger.debug('Connected to Discord!');
   }
 
   //Events

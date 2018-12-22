@@ -30,10 +30,10 @@ export abstract class DiscordCommand {
   aliases:string[];
 
   constructor(discord:DiscordModule, label:string, aliases:string[]=[]) {
-    if(!(discord instanceof DiscordModule)) throw "Must be a valid DiscordModule."
-    if(!label.length) throw "Label must have length greater than 0.";
+    if(!(discord instanceof DiscordModule)) throw new Error("Must be a valid DiscordModule.");
+    if(!label.length) throw new Error("Label must have length greater than 0.");
     aliases.forEach(e => {
-      if(!e.length) throw "Aliases must have length greater than 0."
+      if(!e.length) throw new Error("Aliases must have length greater than 0.");
     });
 
     this.discord = discord;

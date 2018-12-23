@@ -22,6 +22,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import { IApp } from '@yourwishes/app-base';
+import { DiscordModule } from './../discord/';
 
 export interface IDiscordApp extends IApp {
   discord:DiscordModule;

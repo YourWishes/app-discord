@@ -1,13 +1,16 @@
 import { DiscordCommand } from './DiscordCommand';
 import { DiscordModule } from './DiscordModule';
+import { IDiscordApp } from './../app/';
 import { App } from '@yourwishes/app-base';
 import { Message } from 'discord.js';
 
 //Dummy Classes
-const DummyAppClass = class extends App { };
+const DummyAppClass = class extends App implements IDiscordApp {
+  discord:DiscordModule;
+};
 const DummyCommandClass = class extends DiscordCommand {
   testCommand:jest.Mock;
-  
+
   async onCommand(message:Message, label:string, args:string[]) {
     this.testCommand(message,label,args);
   }

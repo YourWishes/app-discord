@@ -1,11 +1,14 @@
 import { DiscordCommand } from './DiscordCommand';
 import { DiscordModule } from './DiscordModule';
+import { IDiscordApp } from './../app/';
 import { App } from '@yourwishes/app-base';
 import { Message } from 'discord.js';
 
 
 //Dummy Classes
-const DummyAppClass = class extends App {
+const DummyAppClass = class extends App implements IDiscordApp {
+  discord:DiscordModule;
+
   constructor() {
     super();
     this.config.data = this.config.data || {};
@@ -47,9 +50,9 @@ describe('init', () => {
     let module = new DiscordModule(newDummyApp);
     newDummyApp.config.data['discord'] =  {};
 
-    await expect(module.init()).rejects.toContain("Missing");
+    await expect(module.init()).rejects.toThrow();
     newDummyApp.config.data['discord'].client_id =  '1';
-    await expect(module.init()).rejects.toContain("Missing");
+    await expect(module.init()).rejects.toThrow();
   });
 
   it('should attempt a login', async () => {

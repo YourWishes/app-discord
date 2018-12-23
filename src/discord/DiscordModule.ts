@@ -22,6 +22,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import { App, Module } from '@yourwishes/app-base';
+import { IDiscordApp } from './../app/';
 import { Client, Message } from 'discord.js';
 import { DiscordCommand } from './DiscordCommand';
 
@@ -34,7 +35,7 @@ export class DiscordModule extends Module {
   token:string;
   commands:DiscordCommand[]=[];
 
-  constructor(app:App) {
+  constructor(app:IDiscordApp) {
     super(app);
 
     //Create a discord client

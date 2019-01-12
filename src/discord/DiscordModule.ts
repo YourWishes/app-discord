@@ -21,7 +21,7 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { App, Module } from '@yourwishes/app-base';
+import { Module } from '@yourwishes/app-base';
 import { IDiscordApp } from './../app/';
 import { Client, Message } from 'discord.js';
 import { DiscordCommand } from './DiscordCommand';
@@ -66,6 +66,14 @@ export class DiscordModule extends Module {
     }
 
     return aliasMatch;
+  }
+
+  getInviteUrl(permissionLevel:number, scope:string='bot'):string {
+    let base = 'https://discordapp.com/api/oauth2/authorize?';
+    base += `client_id=${ encodeURIComponent(this.app.config.get(CONFIG_ID) ) }&`;
+    base += `scope=${ encodeURIComponent(scope) }&`;
+    base += `permissions=${permissionLevel}`;
+    return base;
   }
 
   addCommand(command:DiscordCommand):void {

@@ -62,3 +62,4 @@ typings/
 
 # ignore compiled typescript files
 dist/
+tests/

@@ -1,6 +1,6 @@
 {
   "name": "@yourwishes/app-discord",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Discord Module for use with my App Framework.",
   "main": "dist/index.js",
   "scripts": {

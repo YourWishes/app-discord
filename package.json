@@ -1,6 +1,6 @@
 {
   "name": "@yourwishes/app-discord",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Discord Module for use with my App Framework.",
   "main": "dist/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@yourwishes/app-base": "^1.1.1",
+    "@yourwishes/app-base": "^1.4.1",
     "discord.js": "^11.4.2"
   }
 }

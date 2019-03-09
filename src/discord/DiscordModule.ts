@@ -22,9 +22,10 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import { Module } from '@yourwishes/app-base';
-import { IDiscordApp } from './../app/';
 import { Client, Message } from 'discord.js';
+import { IDiscordApp } from './../app/';
 import { DiscordCommand } from './DiscordCommand';
+import { DiscordUpdateable } from './../update/DiscordUpdateable';
 
 export const CONFIG_ID = 'discord.client_id';
 export const CONFIG_TOKEN = 'discord.token';
@@ -37,6 +38,9 @@ export class DiscordModule extends Module {
 
   constructor(app:IDiscordApp) {
     super(app);
+
+    //Updateable
+    app.updateChecker.addUpdateable(new DiscordUpdateable(app));
 
     //Create a discord client
     this.client = new Client();

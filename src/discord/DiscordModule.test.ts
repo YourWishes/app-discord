@@ -179,3 +179,9 @@ describe('getCommand', () => {
     expect(module.getCommand('')).toBeNull();
   });
 });
+
+describe('loadPackage', () => {
+  it('should be loaded and return the necessary data when the module is constructed', () => {
+    expect(new DiscordModule(DummyApp).package).toHaveProperty('name', '@yourwishes/app-discord');
+  });
+});

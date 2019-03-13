@@ -21,26 +21,23 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import { Module } from '@yourwishes/app-base';
+import { Module, NPMPackage } from '@yourwishes/app-base';
 import { Client, Message } from 'discord.js';
 import { IDiscordApp } from './../app/';
 import { DiscordCommand } from './DiscordCommand';
-import { DiscordUpdateable } from './../update/DiscordUpdateable';
 
 export const CONFIG_ID = 'discord.client_id';
 export const CONFIG_TOKEN = 'discord.token';
 export const CONFIG_COMMAND_PREFIX = 'discord.commandPrefix';
 
 export class DiscordModule extends Module {
+  app:IDiscordApp;
   client:Client;
   token:string;
   commands:DiscordCommand[]=[];
 
   constructor(app:IDiscordApp) {
     super(app);
-
-    //Updateable
-    app.updateChecker.addUpdateable(new DiscordUpdateable(app));
 
     //Create a discord client
     this.client = new Client();
@@ -93,6 +90,7 @@ export class DiscordModule extends Module {
     this.commands.splice(index, 1);
   }
 
+  loadPackage():NPMPackage { return require('./../../package.json'); }
 
   async init():Promise<void> {
     //Check configuration has the correct keys in them.
@@ -103,6 +101,10 @@ export class DiscordModule extends Module {
     this.logger.debug('Connecting to Discord...');
     this.token = await this.client.login(this.app.config.get(CONFIG_TOKEN));
     this.logger.debug('Connected to Discord!');
+  }
+
+  async destroy():Promise<void> {
+    if(this.client) await this.client.destroy();
   }
 
   //Events

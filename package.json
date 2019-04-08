@@ -1,6 +1,6 @@
 {
   "name": "@yourwishes/app-discord",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Discord Module for use with my App Framework.",
   "main": "dist/index.js",
   "scripts": {
@@ -26,12 +26,8 @@
   "homepage": "https://github.com/YourWishes/app-discord#readme",
   "devDependencies": {
     "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.12",
-    "@types/node-cache": "^4.1.1",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.8",
     "ts-jest": "^23.10.5",
-    "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
   "dependencies": {

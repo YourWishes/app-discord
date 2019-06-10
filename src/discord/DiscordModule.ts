@@ -23,7 +23,7 @@
 
 import { Module, NPMPackage } from '@yourwishes/app-base';
 import { Client, Message } from 'discord.js';
-import { IDiscordApp } from './../app/';
+import { IDiscordApp } from '~app';
 import { DiscordCommand } from './DiscordCommand';
 
 export const CONFIG_ID = 'discord.client_id';

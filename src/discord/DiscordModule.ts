@@ -77,13 +77,13 @@ export class DiscordModule extends Module {
     return base;
   }
 
-  addCommand(command:DiscordCommand):void {
+  addDiscordCommand(command:DiscordCommand):void {
     if(!(command instanceof DiscordCommand)) throw new Error("Invalid Command");
     if(this.commands.indexOf(command) !== -1) return;
     this.commands.push(command);
   }
 
-  removeCommand(command:DiscordCommand):void {
+  removeDiscordCommand(command:DiscordCommand):void {
     if(!(command instanceof DiscordCommand)) throw new Error("Invalid Command");
     let index = this.commands.indexOf(command);
     if(index === -1) return;

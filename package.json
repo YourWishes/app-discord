@@ -1,11 +1,11 @@
 {
   "name": "@yourwishes/app-discord",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "description": "Discord Module for use with my App Framework.",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p ."
+    "build": "ttsc -p ."
   },
   "repository": {
     "type": "git",
@@ -25,13 +25,15 @@
   },
   "homepage": "https://github.com/YourWishes/app-discord#readme",
   "devDependencies": {
-    "@types/jest": "^23.3.10",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "@types/jest": "^24.0.13",
+    "@zerollup/ts-transform-paths": "^1.7.3",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "ttypescript": "^1.5.7",
+    "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@yourwishes/app-base": "^2.0.0",
-    "discord.js": "^11.4.2"
+    "@yourwishes/app-base": "^2.2.3",
+    "discord.js": "^11.5.1"
   }
 }

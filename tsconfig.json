@@ -5,7 +5,14 @@
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": true,
-    "typeRoots": [ "./node_modules/@types" ]
+    "typeRoots": [ "./node_modules/@types/" ],
+    "baseUrl": "src",
+    "paths": {
+      "~*": [ "*" ]
+    },
+    "plugins": [
+      { "transform": "@zerollup/ts-transform-paths" }
+    ]
   },
   "include": [
     "src/**/*.ts"

@@ -65,16 +65,16 @@ describe('init', () => {
   });
 });
 
-describe('addCommand', () => {
+describe('addDiscordCommand', () => {
   it('should require a real command', () => {
     let module = new DiscordModule(DummyApp);
-    expect(() => module.addCommand(null)).toThrow();
+    expect(() => module.addDiscordCommand(null)).toThrow();
   });
 
   it('should add a command', () => {
     let module = new DiscordModule(DummyApp);
     let dummyCommand = new DummyCommandClass(module, 'test');
-    expect(() => module.addCommand(dummyCommand)).not.toThrow();
+    expect(() => module.addDiscordCommand(dummyCommand)).not.toThrow();
     expect(module.commands).toContain(dummyCommand);
   });
 
@@ -83,20 +83,20 @@ describe('addCommand', () => {
     let dummyCommand = new DummyCommandClass(module, 'test');
     let dummyCommand2 = new DummyCommandClass(module, 'test2');
 
-    module.addCommand(dummyCommand);
+    module.addDiscordCommand(dummyCommand);
     expect(module.commands).toContain(dummyCommand);
     expect(module.commands).toHaveLength(1);
-    module.addCommand(dummyCommand);
+    module.addDiscordCommand(dummyCommand);
     expect(module.commands).toHaveLength(1);
-    module.addCommand(dummyCommand2);
+    module.addDiscordCommand(dummyCommand2);
     expect(module.commands).toHaveLength(2);
   });
 });
 
-describe('removeCommand', () => {
+describe('removeDiscordCommand', () => {
   it('should require a real command', () => {
     let module = new DiscordModule(DummyApp);
-    expect(() => module.removeCommand(null)).toThrow();
+    expect(() => module.removeDiscordCommand(null)).toThrow();
   });
 
   it('should remove a command', () => {
@@ -104,18 +104,18 @@ describe('removeCommand', () => {
     let dummyCommand = new DummyCommandClass(module, 'test');
     let dummyCommand2 = new DummyCommandClass(module, 'test2');
 
-    module.addCommand(dummyCommand);
-    module.addCommand(dummyCommand2);
+    module.addDiscordCommand(dummyCommand);
+    module.addDiscordCommand(dummyCommand2);
     expect(module.commands).toHaveLength(2);
-    expect(() => module.removeCommand(dummyCommand)).not.toThrow();
+    expect(() => module.removeDiscordCommand(dummyCommand)).not.toThrow();
 
     expect(module.commands).toHaveLength(1);
     expect(module.commands).not.toContain(dummyCommand);
     expect(module.commands).toContain(dummyCommand2);
 
-    module.addCommand(dummyCommand);
-    module.removeCommand(dummyCommand2);
-    module.removeCommand(dummyCommand2);
+    module.addDiscordCommand(dummyCommand);
+    module.removeDiscordCommand(dummyCommand2);
+    module.removeDiscordCommand(dummyCommand2);
     expect(module.commands).toHaveLength(1);
     expect(module.commands).toContain(dummyCommand);
     expect(module.commands).not.toContain(dummyCommand2);
@@ -143,10 +143,10 @@ describe('getCommand', () => {
   let dummyCommandPing = new DummyCommandClass(module, 'ping', ['p', 'po', 'help']);
   let dummyCommandHelp = new DummyCommandClass(module, 'help', ['e', 'test']);
   let dummyCommandTest2 = new DummyCommandClass(module, 'test', []);
-  module.addCommand(dummyCommandTest);
-  module.addCommand(dummyCommandPing);
-  module.addCommand(dummyCommandHelp);
-  module.addCommand(dummyCommandTest2);
+  module.addDiscordCommand(dummyCommandTest);
+  module.addDiscordCommand(dummyCommandPing);
+  module.addDiscordCommand(dummyCommandHelp);
+  module.addDiscordCommand(dummyCommandTest2);
 
   it('should match the command by label', () => {
     expect(module.getCommand('ping')).toEqual(dummyCommandPing);
